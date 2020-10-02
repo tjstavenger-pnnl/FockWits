@@ -1,11 +1,9 @@
 import os
 import sys
-sys.path.append("/home/artix41/Toronto/qiskit-terra/")
 import qiskit
-print(qiskit.__file__)
 import matplotlib.pyplot as plt
 import numpy as np
-from qiskit.tools.visualization._circuit_visualization import circuit_drawer
+from qiskit.visualization.circuit_visualization import circuit_drawer
 from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit
 from qiskit import Aer, execute
 
@@ -31,29 +29,33 @@ class CVCircuit:
 
     def DGate(self, alpha, qumode):
         start_qumode = self.n_qubits_per_mode * qumode
-        self.circuit.unitary(self.gates.D(alpha), *(self.qr[i] for i in range(start_qumode, start_qumode+self.n_qubits_per_mode)))
+        qubits = self.qr[start_qumode:start_qumode+self.n_qubits_per_mode]
+        self.circuit.unitary(self.gates.D(alpha), qubits)
 
     def SGate(self, z, qumode):
         start_qumode = self.n_qubits_per_mode * qumode
-        self.circuit.unitary(self.gates.S(z), *(self.qr[i] for i in range(start_qumode, start_qumode+self.n_qubits_per_mode)))
+        qubits = self.qr[start_qumode:start_qumode+self.n_qubits_per_mode]
+        self.circuit.unitary(self.gates.S(z), qubits)
 
     def RGate(self, phi, qumode):
         start_qumode = self.n_qubits_per_mode * qumode
-        self.circuit.unitary(self.gates.R(phi), *(self.qr[i] for i in range(start_qumode, start_qumode+self.n_qubits_per_mode)))
+        qubits = self.qr[start_qumode:start_qumode+self.n_qubits_per_mode]
+        self.circuit.unitary(self.gates.R(phi), qubits)
 
     def KGate(self, kappa, qumode):
         start_qumode = self.n_qubits_per_mode * qumode
-        self.circuit.unitary(self.gates.K(kappa), *(self.qr[i] for i in range(start_qumode, start_qumode+self.n_qubits_per_mode)))
+        qubits = self.qr[start_qumode:start_qumode+self.n_qubits_per_mode]
+        self.circuit.unitary(self.gates.K(kappa), qubits)
 
     def BSGate(self, phi, qumodes):
         start_qumodes = [self.n_qubits_per_mode * qumodes[0], self.n_qubits_per_mode * qumodes[1]]
-        self.circuit.unitary(self.gates.BS(phi), *([self.qr[i] for i in range(start_qumodes[0], start_qumodes[0]+self.n_qubits_per_mode)] + 
-                                              [self.qr[i] for i in range(start_qumodes[1], start_qumodes[1]+self.n_qubits_per_mode)]))
+        qubits = self.qr[start_qumodes[0]:start_qumodes[0]+self.n_qubits_per_mode] + self.qr[start_qumodes[1]:start_qumodes[1]+self.n_qubits_per_mode]
+        self.circuit.unitary(self.gates.BS(phi), qubits)
 
     def S2Gate(self, z, qumodes):
         start_qumodes = [self.n_qubits_per_mode * qumodes[0], self.n_qubits_per_mode * qumodes[1]]
-        self.circuit.unitary(self.gates.S2(z), *([self.qr[i] for i in range(start_qumodes[0], start_qumodes[0]+self.n_qubits_per_mode)] + 
-                                              [self.qr[i] for i in range(start_qumodes[1], start_qumodes[1]+self.n_qubits_per_mode)]))
+        qubits = self.qr[start_qumodes[0]:start_qumodes[0]+self.n_qubits_per_mode] + self.qr[start_qumodes[1]:start_qumodes[1]+self.n_qubits_per_mode]
+        self.circuit.unitary(self.gates.S2(z), qubits)
  
 if __name__ == '__main__':
     # ===== Constants =====
