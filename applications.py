@@ -50,7 +50,7 @@ def bose_hubard(n_layers=2, J=1, U=0.1, t=0):
 
     prob = np.abs(state)**2
     plt.plot(prob,'-o')
-    plt.show()
+    plt.savefig('applications.png')
         
 if __name__ == '__main__':
     bose_hubard(t=1)

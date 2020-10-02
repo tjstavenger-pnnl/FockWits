@@ -94,4 +94,4 @@ if __name__ == '__main__':
 
     prob = np.abs(state)**2
     plt.plot(prob,'-o')
-    plt.show()
+    plt.savefig('CVCircuit.png')
