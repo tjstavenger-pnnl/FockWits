@@ -1,5 +1,4 @@
 import sys
-sys.path.append("/home/artix41/Toronto/qiskit-terra/")
 from qiskit import QuantumCircuit, ClassicalRegister, QuantumRegister
 from qiskit import Aer, execute
 
