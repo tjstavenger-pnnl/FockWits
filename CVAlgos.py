@@ -23,12 +23,12 @@ def gbs(z, U, n_qubits_per_mode=2, n_qumodes=4):
 
     for n, expphi in enumerate(interferometer.R):
         if np.round(expphi, 13) != 1.0:
-            q = log(expphi).imag
+            q = np.log(expphi).imag
             cv_circuit.RGate(q, n)
 
     for n, m, theta, phi, N in reversed(interferometer.BS2):
         if np.round(theta, 13) != 0:
-            cv_circuit.BSgate(-theta, [n, m])
+            cv_circuit.BSGate(-theta, [n, m])
         if np.round(phi, 13) != 0:
             cv_circuit.RGate(-phi, n)
 
