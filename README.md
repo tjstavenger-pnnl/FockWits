@@ -1,7 +1,30 @@
 # FockWits
 Qiskit camp hackathon project: simulated photonic computer
 
-## Installation
+## Install
+
+Use a Python virtual environment to install compatible version of QisKit.
 
 ```bash
-pip install git+https://github.com/1ucian0/qiskit-terra.git@ugate_re
+git clone https://github.com/tjstavenger-pnnl/FockWits.git
+cd FockWits
+./install-dependencies.sh
+```
+
+## Activate Virtual Environment
+
+Before using FockWits, first install the depencies (as above) and then activate the Python virtual environment.
+
+```bash
+cd <path/to/FockWits>
+source venv/bin/activate
+```
+
+## Run the code
+
+After activating the Python virtual environment, run the scripts. For example:
+
+```bash
+cd <path/to/FockWits>
+python3 CVCircuit.py
+```
