@@ -34,7 +34,7 @@ def gbs(z, U, n_qubits_per_mode=2, n_qumodes=4):
 
     result = []
     for i in range(4):
-        result.append(cv_circuit.Measure(i))
+        result.append(circuit.measure(i, i))
 
     return result
 
